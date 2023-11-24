@@ -1,0 +1,12 @@
+
+def interleave(*lists):
+    results = []
+    for x in zip(*lists):
+        results.extend(x)
+    return results
+
+def main():
+    print(interleave([1, 2, 3], [20, 30, 40], ['a', 'b', 'c']))
+
+if __name__ == "__main__":
+    main()
