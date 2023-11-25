@@ -23,3 +23,23 @@ def named(a, b, c):
 named(5, c=7, b=8)
 
 
+# map function
+# a list and a function as parameters, and it returns a new list whose elements are elements of the original list transformed by the parameter function.
+def double(x):
+    return 2*x
+L=[12,4,-1]
+print(list(map(double, L)))
+
+# convert all values in list into int
+s="12 43 64 6"
+L=s.split()        # The split method of the string class, breaks the string at whitespaces
+                   # to a list of strings.
+print(L)
+print(sum(map(int, L)))  # The int function converts a string to an integer
+
+
+# lambda function
+L=[2,3,5]
+print(list(map(lambda x : 2*x+x**2, L)))
+
+

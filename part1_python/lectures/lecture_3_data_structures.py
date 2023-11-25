@@ -21,6 +21,9 @@ print(list(zip(L1, L2))) # [(1, 'first'), (2, 'second'), (3, 'third')]
 d={"key1":"value1", "key2":"value2"}
 
 # non-mutating
+x = 1
+k = 2
+d1 = {"dkey1": "dvalue1"}
 d.copy()
 d.items()
 d.keys()
@@ -57,10 +60,32 @@ print("Difference:", s-t)
 print("Symmetric difference", s^t)
 
 # mutating set methods
+x = 1
 s.add(x)
 s.clear()
 s.discard()
 s.pop()
 s.remove(x)
 
+# list comprehension
+L=[ a**3 for a in range(1,11)]
+print(L)
+
+L=[ 100*a + 10*b +c for a in range(0,10)
+                    for b in range(0,10)
+                    for c in range(0,10)
+                    if a <= b <= c]
+print(L)
+
+# generator expression: If one needs only to iterate through the list once,the surrounding brackets are replaced by parentheses:
+G = ( 100*a + 10*b + c for a in range(0,10)
+                       for b in range(0,10)
+                       for c in range(0,10)
+                       if a <= b <= c )
+print(sum(G))   # Get 60885, This iterates through all the elements from the generator
+print(sum(G))   # Get 0, It doesn't restart from the beginning, so all elements are already consumed
+
+# dictionary comprehension
+d={ k : k**2 for k in range(10)}
+print(d)
 
