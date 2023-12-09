@@ -85,3 +85,15 @@ np.stack((b,b), axis=1) # stack horizontally
 # or it specifies explicitly the break points.
 
 
+##############################################################################
+# aggregations
+np.random.seed(0)
+a=np.random.randint(-100, 100, (4,5))
+print(a)
+print(f"Minimum: {a.min()}, maximum: {a.max()}")
+print(f"Sum: {a.sum()}")
+print(f"Mean: {a.mean()}, standard deviation: {a.std()}")
+
+
+
+
