@@ -4,16 +4,16 @@ import sys
 from functools import reduce
 
 def file_count(filename):
-    num_lines = 0
+    lines = []
     num_words = 0
     num_chars = 0
     with open(filename) as rf:
-        num_lines += len(list(rf))
-        for line in rf:
-            if line.replace('\n','').strip() != '':
-                num_words += len(line.split())
-                num_chars += sum(list(map(lambda x:len(x),line.replace('\n', '').split())))
-    return (num_lines, num_words, num_chars)
+        lines = rf.readlines()
+    for line in lines:
+        words = line.split()
+        num_words += len(words)
+        num_chars += len(line)
+    return (len(lines), num_words, num_chars)
 
 def main():
     for filename in sys.argv[1:]:

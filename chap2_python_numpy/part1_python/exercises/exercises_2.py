@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 
 import re
+from datetime import datetime
 
 
 def file_listing(filename="src/listing.txt"):
+    lines = []
     results = []
     with open(filename) as rf:
-        for line in rf:
-            parsed_line = line.replace('\n', '')
-            found = re.findall(r"[rwx-]*\s*\d\s*\w*\s*\w*-\w*\s*(\d+)\s*(\w{,3})\s*(\d+)\s(\d+):(\d+)\s*([A-Za-z0-9-._]+)", parsed_line)
-            for t in found:
-                results.append(t)
+        lines = rf.readlines()
+    for line in lines:
+        parsed_line = line.replace('\n', '')
+        match = re.match(r'^\s*([^\s]+)\s+(\d+)\s+([^\s]+)\s+([^\s]+)\s+(\d+)\s+([a-zA-Z]+)\s+(\d+)\s+(\d+:\d+)\s+(.*)$', parsed_line)
+        if match:
+            size = int(match.group(5))
+            month = match.group(6)
+            day = int(match.group(7))
+            hour, minute = map(int, match.group(8).split(':'))
+            filename = match.group(9)
+            # month_number = datetime.strptime(month, '%b').month
+            results.append((size, month, day, hour, minute, filename))
     return results
 
 def main():
